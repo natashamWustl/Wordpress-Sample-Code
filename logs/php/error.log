@@ -1,0 +1,25 @@
+[31-Jan-2023 22:48:58 UTC] PHP Warning:  Undefined array key "link" in /Users/natashamatthews/Local Sites/faculty/app/public/wp-content/themes/faculty-type/single-faculty.php on line 34
+[31-Jan-2023 22:48:58 UTC] PHP Warning:  Trying to access array offset on value of type null in /Users/natashamatthews/Local Sites/faculty/app/public/wp-content/themes/faculty-type/single-faculty.php on line 34
+[31-Jan-2023 22:48:58 UTC] PHP Warning:  Undefined array key "link" in /Users/natashamatthews/Local Sites/faculty/app/public/wp-content/themes/faculty-type/single-faculty.php on line 34
+[31-Jan-2023 22:48:58 UTC] PHP Warning:  Trying to access array offset on value of type null in /Users/natashamatthews/Local Sites/faculty/app/public/wp-content/themes/faculty-type/single-faculty.php on line 34
+[31-Jan-2023 22:50:29 UTC] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /Users/natashamatthews/Local Sites/faculty/app/public/wp-content/themes/faculty-type/single-faculty.php:34
+Stack trace:
+#0 /Users/natashamatthews/Local Sites/faculty/app/public/wp-includes/template-loader.php(106): include()
+#1 /Users/natashamatthews/Local Sites/faculty/app/public/wp-blog-header.php(19): require_once('/Users/natasham...')
+#2 /Users/natashamatthews/Local Sites/faculty/app/public/index.php(17): require('/Users/natasham...')
+#3 {main}
+  thrown in /Users/natashamatthews/Local Sites/faculty/app/public/wp-content/themes/faculty-type/single-faculty.php on line 34
+[31-Jan-2023 22:53:56 UTC] PHP Fatal error:  Uncaught TypeError: Cannot access offset of type string on string in /Users/natashamatthews/Local Sites/faculty/app/public/wp-content/themes/faculty-type/single-faculty.php:34
+Stack trace:
+#0 /Users/natashamatthews/Local Sites/faculty/app/public/wp-includes/template-loader.php(106): include()
+#1 /Users/natashamatthews/Local Sites/faculty/app/public/wp-blog-header.php(19): require_once('/Users/natasham...')
+#2 /Users/natashamatthews/Local Sites/faculty/app/public/index.php(17): require('/Users/natasham...')
+#3 {main}
+  thrown in /Users/natashamatthews/Local Sites/faculty/app/public/wp-content/themes/faculty-type/single-faculty.php on line 34
+[01-Feb-2023 15:23:37 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "personal_website" in /Users/natashamatthews/Local Sites/faculty/app/public/wp-content/themes/faculty-type/single-faculty.php:24
+Stack trace:
+#0 /Users/natashamatthews/Local Sites/faculty/app/public/wp-includes/template-loader.php(106): include()
+#1 /Users/natashamatthews/Local Sites/faculty/app/public/wp-blog-header.php(19): require_once('/Users/natasham...')
+#2 /Users/natashamatthews/Local Sites/faculty/app/public/index.php(17): require('/Users/natasham...')
+#3 {main}
+  thrown in /Users/natashamatthews/Local Sites/faculty/app/public/wp-content/themes/faculty-type/single-faculty.php on line 24
