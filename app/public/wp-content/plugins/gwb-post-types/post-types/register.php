@@ -1,7 +1,7 @@
 <?php
 function gwb_register_faculty_type() {
     $labels = array(
-        'name' => __( 'Faculty', GWBPATH),
+        'name' => __( 'Faculty Members', GWBPATH),
         'singular_name' => __('Faculty', GWBPATH),
         'featured_image' => __('Faculty Photo', GWBPATH),
         'set_featured_image' => __( 'Set Faculty Photo', GWBPATH),
@@ -20,12 +20,14 @@ function gwb_register_faculty_type() {
         'public' => true,
         'show_in_rest' => true,
         'has_archive' => true,
+        'delete_with_user' => false,
+        'exclude_from_search' => false,
         'rewrite' => array(
             'slug' => 'Faculty-and-Research',
             'has_front' => true
         ),
         'menu_icon' => 'dashicons-welcome-learn-more',
-        'supports' => array('title', 'editor', 'thumbnail'),
+        'supports' => array('title', 'editor', 'thumbnail', 'revisions'),
     );
 
     register_post_type( 'faculty', $args);

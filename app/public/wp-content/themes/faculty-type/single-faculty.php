@@ -9,17 +9,30 @@ while ( have_posts() ) :
     </div>
     <div>
         <h2><?php the_title(); ?></h2>
-            <p><?php the_field('endowed_position'); ?></p>
-            <p><?php the_field('brown_current_role'); ?></p>
-            <p><i><?php the_field('degree');  ?>, <?php the_field('institution');  ?></i></p>
-            <p>Office Phone: <?php the_field('office_phone');  ?></p>
+            <p><?php get_field('endowed_position') ? the_field('endowed_position') : the_field('brown_current_role') ?></p>
+            <?php if(get_field('brown_custom_title')): ?>
+                <p><?php the_field('brown_custom_title');  ?></p>
+            <?php endif; ?>
+
+            <?php if(get_field('degree') || get_field('institution')): ?>
+                <p><i><?php the_field('degree');  ?>, <?php the_field('institution');  ?></i></p>
+            <?php endif; ?>
+            
+            
+            <p>Office Phone: <?php get_field('office_phone') ? the_field('office_phone') : '--' ?></p>
+
+
             <p>Email: <a href="mailto:<?php the_field('email_address');  ?>"><?php the_field('email_address');  ?></a></p>
+            
             <?php
             $cv_file = get_field('cv_upload');
             if( $cv_file ): ?>
-                <p><a href="<?php echo $cv_file['url']; ?>">Download CV</a></p>
+                <p><a href="<?php echo esc_url($cv_file['url']); ?>">Download CV</a></p>
             <?php endif; ?>
-            <p><a href="<?php get_field('personal_website'); ?>"> <?php get_field('personal_website'); ?> Website</a></p>
+
+            <?php if(get_field('personal_website')): ?>
+                <p><a href="<?php echo esc_url(get_field('personal_website')); ?>"> Website</a></p>
+            <?php endif; ?>
         <h3>Areas of Focus:</h3>
             <p><?php the_field('research_interests_1'); ?></p>
             <p><?php the_field('research_interests_2'); ?></p>
@@ -43,6 +56,14 @@ while ( have_posts() ) :
             <p><a href="<?php echo esc_url( $brown_publication_2['link'] ); ?>"><?php echo esc_html( $brown_publication_2['publication_title'] ); ?></a></p>
             <p><?php echo esc_attr( $brown_publication_2['journal'] ); ?></p>
             <p><?php echo esc_attr( $brown_publication_2['publication_date'] ); ?></p>
+        <?php endif; ?>
+
+        <?php
+        $brown_publication_3 = get_field('brown_publication_3');
+        if( $brown_publication_3 ): ?>
+            <p><a href="<?php echo esc_url( $brown_publication_3['link'] ); ?>"><?php echo esc_html( $brown_publication_3['publication_title'] ); ?></a></p>
+            <p><?php echo esc_attr( $brown_publication_3['journal'] ); ?></p>
+            <p><?php echo esc_attr( $brown_publication_3['publication_date'] ); ?></p>
         <?php endif; ?>
     </div>
 
