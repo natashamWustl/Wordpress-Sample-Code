@@ -4,7 +4,7 @@ while ( have_posts() ) :
     the_post();
  ?>   
     <div>
-        <?php the_post_thumbnail(); ?>
+        <?php the_post_thumbnail('large'); ?>
         <?php the_content(); ?>
     </div>
     <div>
@@ -18,10 +18,7 @@ while ( have_posts() ) :
                 <p><i><?php the_field('degree');  ?>, <?php the_field('institution');  ?></i></p>
             <?php endif; ?>
             
-            
             <p>Office Phone: <?php get_field('office_phone') ? the_field('office_phone') : '--' ?></p>
-
-
             <p>Email: <a href="mailto:<?php the_field('email_address');  ?>"><?php the_field('email_address');  ?></a></p>
             
             <?php
@@ -33,39 +30,30 @@ while ( have_posts() ) :
             <?php if(get_field('personal_website')): ?>
                 <p><a href="<?php echo esc_url(get_field('personal_website')); ?>"> Website</a></p>
             <?php endif; ?>
+            
         <h3>Areas of Focus:</h3>
-            <p><?php the_field('research_interests_1'); ?></p>
-            <p><?php the_field('research_interests_2'); ?></p>
-            <p><?php the_field('research_interests_3'); ?></p>
-            <p><?php the_field('research_interests_4'); ?></p>
-            <p><?php the_field('research_interests_5'); ?></p>
+        <?php 
+        $interestArray = array(get_field('research_interests_1'), get_field('research_interests_2'), get_field('research_interests_3'), get_field('research_interests_4'), get_field('research_interests_5'));
+        foreach ($interestArray as $interest) { ?>
+            <p><?php echo esc_attr( $interest ); ?></p>
+        <?php } ?>
     </div>
     <div>
         <h2>Featured Publications</h2>
-        <?php
-        $brown_publication_1 = get_field('brown_publication_1');
-        if( $brown_publication_1 ): ?>
-            <p><a href="<?php echo esc_url( $brown_publication_1['link'] ); ?>"><?php echo esc_html( $brown_publication_1['publication_title'] ); ?></a></p>
-            <p><?php echo esc_attr( $brown_publication_1['journal'] ); ?></p>
-            <p><?php echo esc_attr( $brown_publication_1['publication_date'] ); ?></p>
-        <?php endif; ?>
-        <?php
-
-        $brown_publication_2 = get_field('brown_publication_2');
-        if( $brown_publication_2 ): ?>
-            <p><a href="<?php echo esc_url( $brown_publication_2['link'] ); ?>"><?php echo esc_html( $brown_publication_2['publication_title'] ); ?></a></p>
-            <p><?php echo esc_attr( $brown_publication_2['journal'] ); ?></p>
-            <p><?php echo esc_attr( $brown_publication_2['publication_date'] ); ?></p>
-        <?php endif; ?>
-
-        <?php
-        $brown_publication_3 = get_field('brown_publication_3');
-        if( $brown_publication_3 ): ?>
-            <p><a href="<?php echo esc_url( $brown_publication_3['link'] ); ?>"><?php echo esc_html( $brown_publication_3['publication_title'] ); ?></a></p>
-            <p><?php echo esc_attr( $brown_publication_3['journal'] ); ?></p>
-            <p><?php echo esc_attr( $brown_publication_3['publication_date'] ); ?></p>
-        <?php endif; ?>
+        <?php 
+        $publicationsArray = array(get_field('brown_publication_1'), get_field('brown_publication_2'), get_field('brown_publication_3'));
+        foreach ($publicationsArray as $publication) { ?>
+            <?php if($publication['link'])  { ?>
+                <p><a href="<?php echo esc_url( $publication['link'] ); ?>"><?php echo esc_html( $publication['publication_title'] ); ?></a><br/>
+            <?php } else { ?>
+                <p><?php echo esc_html( $publication['publication_title'] ); ?><br/>
+            <?php } ?>
+            <?php echo esc_attr( $publication['journal'] ); ?><br/>
+            <?php echo esc_attr( $publication['publication_date'] ); ?></p>
+        <?php } ?>
     </div>
+
+    
 
 
 <?php
